@@ -7,7 +7,7 @@ stations = {
     "Dakar": {"lat": 14.746475571894893, "lon": -17.510440956465402},
     "Ouakam": {"lat": 14.720079659709183, "lon": -17.490598679618262},
     "Diourbel1": {"lat": 14.661614, "lon": -16.23111},
-    "Diourbel2": {"lat": 14.653855, "lon": -16.2306},
+    "Notre_dame_Diourbel2": {"lat": 14.653855, "lon": -16.2306},
     "SaintLouis": {"lat": 16.019319341426606, "lon": -16.490593389948394},
     "RichardToll": {"lat": 16.457985152738317, "lon": -15.705461444809703},
     "Pikine": {"lat": 14.7444588, "lon": -17.4017114},
@@ -33,19 +33,27 @@ for nom, coord in stations.items():
     )
 
     print(f"\nTéléchargement des données pour {nom}...")
+    print(f"URL: {url}")
     response = requests.get(url)
+
+    # Ajout des impressions pour le debug
+    print(f"Status Code: {response.status_code}")
+    print(f"Response Text: {response.text}")
 
     if response.status_code == 200:
         data = response.json()
 
-        # Convertir en DataFrame
-        df = pd.DataFrame(data["hourly"])
-        df["time"] = pd.to_datetime(df["time"])
+        # Vérifier si les données contiennent bien "hourly"
+        if "hourly" in data:
+            df = pd.DataFrame(data["hourly"])
+            df["time"] = pd.to_datetime(df["time"])
 
-        # Sauvegarder en CSV
-        filename = f"{nom}_meteo.csv"
-        df.to_csv(filename, index=False)
-        print(f"✅ Données sauvegardées dans {filename}")
+            # Sauvegarder en CSV
+            filename = f"{nom}_meteo.csv"
+            df.to_csv(filename, index=False)
+            print(f"✅ Données sauvegardées dans {filename}")
+        else:
+            print(f"❌ Pas de données 'hourly' pour {nom}")
     else:
         print(
             f"❌ Erreur pour {nom} : {response.status_code} - {response.text}")
