@@ -1,1 +1,31 @@
+# === CORE OPENAQ ===
+openaq>=0.3.0
 
+# === CONFIGURATION ===
+python-dotenv>=1.0.0
+
+# === DATA PROCESSING ===
+pandas>=2.0.0
+
+# === BASE DE DONNÉES ===
+psycopg2-binary>=2.9.10
+
+# === CACHE ===
+redis>=4.6.0
+
+# === WEB API ===
+fastapi>=0.104.0                 # Framework API moderne
+uvicorn[standard]>=0.24.0        # Serveur ASGI
+pydantic>=2.5.0                  # Validation données
+
+
+# === ASYNC TOOLS ===
+asyncio-throttle>=1.0.2          # Limitation taux requêtes
+anyio>=4.0.0                     # Abstraction async
+
+# === TESTING (optionnel) ===
+pytest>=7.4.0                    # Tests unitaires
+pytest-asyncio>=0.21.0           # Tests async
+
+# === MONITORING (optionnel) ===
+psutil>=5.9.0                    # Monitoring système
