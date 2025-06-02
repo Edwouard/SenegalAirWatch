@@ -1,0 +1,97 @@
+# Configuration Git pour la gestion cohérente des fichiers
+# Ce fichier assure que tous les membres de l'équipe traitent les fichiers de manière identique
+# indépendamment de leur système d'exploitation (Windows, macOS, Linux)
+
+# === RÈGLES GÉNÉRALES ===
+# Par défaut, Git gère automatiquement les fins de ligne
+* text=auto
+
+# === FICHIERS TEXTE STANDARD ===
+# Ces fichiers doivent toujours utiliser des fins de ligne LF (standard Unix)
+# même sur Windows, pour assurer la compatibilité maximale
+
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.cfg text eol=lf
+*.ini text eol=lf
+*.sh text eol=lf
+
+# Fichiers de configuration spéciaux
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.env* text eol=lf
+requirements*.txt text eol=lf
+Dockerfile* text eol=lf
+Makefile text eol=lf
+
+# === FICHIERS SPÉCIFIQUES WINDOWS ===
+# Ces fichiers doivent garder les fins de ligne Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# === FICHIERS BINAIRES ===
+# Ces fichiers ne doivent jamais être modifiés par Git
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary
+*.pkl binary
+*.pickle binary
+*.joblib binary
+*.h5 binary
+*.hdf5 binary
+*.parquet binary
+
+# === NOTEBOOKS JUPYTER ===
+# Traitement spécial pour les notebooks (format JSON avec métadonnées)
+*.ipynb text eol=lf
+
+# Optionnel : filtres pour nettoyer automatiquement les notebooks
+# Décommentez si vous voulez utiliser nbstripout automatiquement
+# *.ipynb filter=nbstripout
+# *.ipynb diff=ipynb
+
+# === FICHIERS DE DONNÉES ===
+# Les CSV peuvent contenir des caractères spéciaux, traitement prudent
+*.csv text eol=lf
+
+# Fichiers de données volumineux - traitement binaire pour éviter la corruption
+*.feather binary
+*.arrow binary
+
+# === DOCUMENTATION ===
+# Fichiers de documentation avec fins de ligne cohérentes
+*.rst text eol=lf
+*.tex text eol=lf
+
+# === FICHIERS DE BUILD ET CI/CD ===
+# Scripts et configurations d'automatisation
+*.dockerfile text eol=lf
+.github/**/* text eol=lf
+.pre-commit-config.yaml text eol=lf
+
+# === NOTES IMPORTANTES ===
+#
+# 1. Ce fichier doit être commité AVANT les autres fichiers du projet
+#    pour que les règles s'appliquent dès le début
+#
+# 2. Si vous modifiez ce fichier après avoir commité d'autres fichiers,
+#    exécutez : git add --renormalize .
+#
+# 3. Tous les membres de l'équipe bénéficient automatiquement de ces règles
+#    une fois qu'ils clonent le repository
+#
+# 4. Ces règles sont particulièrement importantes pour :
+#    - La collaboration Windows/macOS/Linux
+#    - Le déploiement sur HuggingFace Spaces (Linux)
+#    - La reproducibilité des analyses de données
