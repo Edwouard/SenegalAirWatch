@@ -1,0 +1,112 @@
+# === ENVIRONNEMENTS PYTHON ===
+# Ces fichiers contiennent votre environnement local et ne doivent jamais être partagés
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+ENV/
+.venv/
+.env
+.env.local
+.env.production
+
+# === DONNÉES ET MODÈLES ===
+# Les données peuvent être volumineuses et contenir des informations sensibles
+data/raw/
+data/processed/
+data/cache/
+*.csv
+*.json
+*.parquet
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+
+# Exceptions : gardons les exemples de données pour les tests
+!data/sample/
+!data/examples/
+
+# === OUTPUTS ET RÉSULTATS ===
+# Les sorties peuvent être régénérées et ne doivent pas encombrer le dépôt
+output/
+results/
+plots/
+*.png
+*.jpg
+*.pdf
+*.svg
+
+# Exceptions : gardons les images de documentation
+!docs/images/
+!README_images/
+
+# === JUPYTER NOTEBOOKS ===
+# Les notebooks peuvent contenir des sorties volumineuses et des tokens secrets
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Optionnel : nettoyer les sorties des notebooks avant commit
+# Décommentez si vous voulez garder les notebooks sans outputs
+# *.ipynb
+
+# === LOGS ET DEBUGGING ===
+# Les logs peuvent rapidement devenir volumineux
+*.log
+logs/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# === IDE ET ÉDITEURS ===
+# Configuration spécifique à chaque développeur
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Exceptions : configurations partagées pour l'équipe
+!.vscode/settings.json.template
+!.vscode/extensions.json
+
+# === SYSTÈME D'EXPLOITATION ===
+# Fichiers système automatiquement créés
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# === DISTRIBUTION ET BUILD ===
+# Fichiers générés lors de la création de packages
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# === SÉCURITÉ ===
+# Fichiers pouvant contenir des secrets
+config/secrets.yaml
+config/local_settings.py
+*.key
+*.pem
+*.crt
+
+# === TEMPORAIRES ET CACHE ===
+# Fichiers temporaires de diverses applications
+.tmp/
+tmp/
+*.tmp
+*.temp
+.cache/
+
+# === SPÉCIFIQUE HUGGINGFACE ===
+# Fichiers créés lors des tests locaux avec HF
+.huggingface/
+wandb/
